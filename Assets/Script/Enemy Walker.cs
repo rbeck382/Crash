@@ -8,6 +8,8 @@ public class EnemyWalker : Enemy
     private Transform endPoint;
     [SerializeField]
     private float speed = 2f;
+    [SerializeField]
+    private float rotationSpeed = 360f;
     private Vector3 startPosition;
     private Vector3 endPosition;
     private Vector3 targetPosition;

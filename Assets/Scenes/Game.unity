@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae2dc7bc5f7a0c42a79c2df3c98795b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputController
+  isActive: 1
 --- !u!4 &34205082
 Transform:
   m_ObjectHideFlags: 0
@@ -756,11 +757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea112fcedabd98e42a3c061fbe61060b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWalker
-  characterAnimator: {fileID: 0}
+  characterAnimator: {fileID: 50210390}
   hitParticles: {fileID: 6926713622644123317, guid: 93cc23d57f3ade14d9fd31665bb9c594, type: 3}
   startPoint: {fileID: 517031640}
   endPoint: {fileID: 1541046270}
   speed: 2
+  rotationSpeed: 360
 --- !u!1 &722418981
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +795,9 @@ MonoBehaviour:
   coinsController: {fileID: 1844015596}
   player: {fileID: 977518652}
   startPosition: {fileID: 865208485}
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &722418983
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,6 +1230,13 @@ MonoBehaviour:
           m_StringArgument: get_magic_cast
           m_BoolArgument: 0
         m_CallState: 2
+  onEnemyHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerLose:
+    m_PersistentCalls:
+      m_Calls: []
+  rollController: {fileID: 0}
 --- !u!1 &1099615666
 GameObject:
   m_ObjectHideFlags: 0
