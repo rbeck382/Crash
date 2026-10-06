@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameContyroller : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class GameContyroller : MonoBehaviour
     private Transform player;
     [SerializeField]
     private Transform startPosition;
+    [SerializeField]
+    private UnityEvent onGameStart;
     private void Start()
     {
         StartGame();
@@ -16,6 +20,7 @@ public class GameContyroller : MonoBehaviour
     {
         coinsController.Initialize();
         player.position = startPosition.position;
+        onGameStart?.Invoke();
     }
 
 }

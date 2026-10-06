@@ -14,6 +14,7 @@ public class RollController : MonoBehaviour
     [SerializeField]
     private float effectOffsetY = 0.5f;
     private bool isRolling = false;
+    public bool IsRolling => isRolling;
     private void Update()
     {
         if(isRolling && inputController.Roll)
