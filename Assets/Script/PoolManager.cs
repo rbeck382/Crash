@@ -4,10 +4,10 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
   private Dictionary<GameObject, Pool> pools = new Dictionary<GameObject, Pool>();
-  public static PoolManager instance { get; private set; }
+  public static PoolManager Instance { get; private set; }
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     public void RegisterPrefab(GameObject prefab)
     {
@@ -19,17 +19,30 @@ public class PoolManager : MonoBehaviour
             pools.Add(prefab, newPool);
         }
     }
-     public GameObject GetObject(GameObject prefab, Vector3 position)
+     public GameObject GetObject(GameObject prefab, Vector3 position, bool isTurnOff = false)
     {
         if (pools.TryGetValue(prefab, out Pool pool))
         {
-            pool.InstantiateObject(position);
+            pool.InstantiateObject(position, isTurnOff);
             return pool.CurrenObject;
         }
         else
         {
             RegisterPrefab(prefab);
-            return GetObject(prefab, position);
+            return GetObject(prefab, position, isTurnOff);
+        }
+    }
+    public GameObject GetObject(GameObject prefab, Transform parent, bool isTurnOff = false)
+    {
+        if (pools.TryGetValue(prefab,out Pool pool))
+        {
+            pool.InstantiateObject(parent, isTurnOff);
+            return pool.CurrenObject;
+        }
+        else
+        {
+            RegisterPrefab(prefab);
+            return GetObject(prefab, parent, isTurnOff);
         }
     }
 }

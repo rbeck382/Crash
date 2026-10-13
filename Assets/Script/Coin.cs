@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
     private GameObject coinEffectPrefab;
     public void onGrabbed()
     {
-        PoolManager.instance.GetObject(coinEffectPrefab, transform.position);
+        PoolManager.Instance.GetObject(coinEffectPrefab, transform.position);
         gameObject.SetActive(false);
     }
 

@@ -21,7 +21,7 @@ public class CharacterAnimationController : MonoBehaviour
         isActive = false;
         PlayAnimation(animationConfiguration.dieAnimationName);
     }
-    private void Roll()
+    public void Roll()
     {
         isRolling = true;
         PlayAnimation(animationConfiguration.rollAnimationName);
