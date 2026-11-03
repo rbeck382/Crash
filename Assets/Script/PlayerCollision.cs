@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,15 +6,23 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private UnityEvent<int> onCoinsCollected;
     [SerializeField]
+    private UnityEvent onMaskCollected;
+    [SerializeField]
     private UnityEvent<Transform> onEnemyHit;
     [SerializeField]
     private UnityEvent onPlayerLose;
     [SerializeField]
+    private UnityEvent onFall;
+    [SerializeField]
+    private UnityEvent<Transform> onCheckpointCollected;
+    [SerializeField]
     private RollController rollController;
     private Invicibility invicibility;
+    private JumpController jumpController;
     private void Awake()
     {
         invicibility = GetComponent<Invicibility>();
+        jumpController = GetComponent<JumpController>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -45,6 +52,54 @@ public class PlayerCollision : MonoBehaviour
                 }
             }
         }
+        else if (other.CompareTag("Box"))
+        {
+            if (other.TryGetComponent(out Box box))
+            {
+                if (rollController.IsRolling)
+                {
+                    box.Break();
+                }
+            }
+        }
+        else if (other.CompareTag("Checkpoint"))
+        {
+            if (other.TryGetComponent(out Item item))
+            {
+                onCheckpointCollected?.Invoke(item.transform);
+                item.Collect();
+            }
+        }
+        else if (other.CompareTag("Cliff"))
+        {
+            jumpController.HasGravity = false;
+            onFall?.Invoke();
+        }
+        else if (other.CompareTag("Mask"))
+        {
+            if (other.TryGetComponent(out Item item))
+            {
+                onMaskCollected?.Invoke();
+                item.Collect();
+            }
+        }
     }
-
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Box"))
+        {
+            if (hit.collider.TryGetComponent(out Box box))
+            {
+                if (IsCharacterOnTop(hit))
+                {
+                    box.Break();
+                    jumpController.Jump();
+                }
+            }
+        }
+    }
+    private bool IsCharacterOnTop(ControllerColliderHit hit)
+    {
+        return hit.normal.y > 0.5f;
+    }
 }

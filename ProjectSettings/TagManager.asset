@@ -8,6 +8,10 @@ TagManager:
   - coin
   - FxTemporaire
   - Enemy
+  - Box
+  - Check Point
+  - Cliff
+  - Mask
   layers:
   - Default
   - TransparentFX
