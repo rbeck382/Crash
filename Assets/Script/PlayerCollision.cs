@@ -6,6 +6,8 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private UnityEvent<int> onCoinsCollected;
     [SerializeField]
+    private UnityEvent onContinueCollected;
+    [SerializeField]
     private UnityEvent onMaskCollected;
     [SerializeField]
     private UnityEvent<Transform> onEnemyHit;
@@ -36,13 +38,12 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            if (invicibility.IsGhost || invicibility.IsInvicible) return;
+            if (invicibility.IsGhost) return;
             if(other.TryGetComponent(out Enemy enemy))
             {
-                if (rollController.IsRolling)
+                if (rollController.IsRolling || invicibility.IsInvicible)
                 {
                     enemy.Die();
-
                     onEnemyHit?.Invoke(enemy.transform);
                 }
                 else
@@ -56,7 +57,7 @@ public class PlayerCollision : MonoBehaviour
         {
             if (other.TryGetComponent(out Box box))
             {
-                if (rollController.IsRolling)
+                if (rollController.IsRolling || invicibility.IsInvicible)
                 {
                     box.Break();
                 }
@@ -94,6 +95,10 @@ public class PlayerCollision : MonoBehaviour
                 {
                     box.Break();
                     jumpController.Jump();
+                }
+                else if (invicibility.IsInvicible)
+                {
+                    box.Break();
                 }
             }
         }

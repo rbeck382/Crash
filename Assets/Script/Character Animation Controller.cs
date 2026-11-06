@@ -15,11 +15,17 @@ public class CharacterAnimationController : MonoBehaviour
     private bool isRolling;
     private bool wasGrounded;
     private bool isActive = true;
-    public bool IsActive { set => isActive = value; }
+    public bool IsActive { set => isActive = value; 
+    }
     public void Die()
     {
         isActive = false;
         PlayAnimation(animationConfiguration.dieAnimationName);
+    }
+    public void Dance()
+    {
+        isActive = false;
+        PlayAnimation(animationConfiguration.danceAnimationName);
     }
     public void Roll()
     {
