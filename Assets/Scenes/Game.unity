@@ -363,7 +363,43 @@ MonoBehaviour:
         m_CallState: 2
   onWin:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 34205081}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: set_IsActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 977518655}
+        m_TargetAssemblyTypeName: MovementController, Assembly-CSharp
+        m_MethodName: StopMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 977518656}
+        m_TargetAssemblyTypeName: CharacterAnimationController, Assembly-CSharp
+        m_MethodName: Dance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &75333556
 Transform:
   m_ObjectHideFlags: 0
@@ -1586,7 +1622,7 @@ Transform:
   m_GameObject: {fileID: 865208484}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.56, y: 2.92, z: 3.22}
+  m_LocalPosition: {x: -2.56, y: 3.08, z: 16.25}
   m_LocalScale: {x: 1, y: 1, z: 1.6382}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1862,6 +1898,33 @@ MonoBehaviour:
   onContinueCollected:
     m_PersistentCalls:
       m_Calls: []
+  onLevelGemCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2079576622}
+        m_TargetAssemblyTypeName: GameOverController, Assembly-CSharp
+        m_MethodName: WinGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 75333555}
+        m_TargetAssemblyTypeName: PlayerState, Assembly-CSharp
+        m_MethodName: Win
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onMaskCollected:
     m_PersistentCalls:
       m_Calls:
@@ -3207,6 +3270,8 @@ MonoBehaviour:
   walkSmoothTime: 0.15
   jumpSmothTime: 0.3
   downLimit: -1
+  lookAheadDistance: 1.2
+  lookAheadSmoothTime: 0.45
 --- !u!1001 &1999823327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4557,16 +4622,16 @@ SceneRoots:
   - {fileID: 1976569945}
   - {fileID: 2075341324}
   - {fileID: 792307297}
+  - {fileID: 977518652}
   - {fileID: 539541232}
   - {fileID: 1099615669}
-  - {fileID: 977518652}
+  - {fileID: 1108304280}
   - {fileID: 6200381318953906019}
   - {fileID: 101183329}
   - {fileID: 1107139498}
   - {fileID: 1155619775753939827}
   - {fileID: 1506769980}
   - {fileID: 2084952652}
-  - {fileID: 1108304280}
   - {fileID: 3142278368148121958}
   - {fileID: 318936153}
   - {fileID: 947519201}
